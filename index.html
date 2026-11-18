@@ -608,8 +608,8 @@ var IMGS = {"gold": "data:image/webp;base64,UklGRoBhAABXRUJQVlA4IHRhAABwiwKdASrQ
     PROMOS.filter(function(p){return (p.items||p.from).every(function(i){var x=byId(i);return x&&!x.agotado})}).forEach(function(p){
       var el=document.createElement("article"); el.className="promo";
       var imgs=(p.items||p.from.slice(0,3)).map(function(i){return '<img alt="" src="'+IMGS[i]+'">'}).join("");
-      var opts='<button type="button" class="opt" data-s="5" aria-pressed="true"><span>'+(p.items?p.items.length:p.pick)+' × 5 ml</span><span><s>'+money(p.o5)+'</s><b>'+money(p.p5)+'</b></span></button>';
-      if(p.p10) opts+='<button type="button" class="opt" data-s="10" aria-pressed="false"><span>'+p.items.length+' × 10 ml</span><span><s>'+money(p.o10)+'</s><b>'+money(p.p10)+'</b></span></button>';
+      var opts='<button type="button" class="opt" data-s="5" aria-pressed="true"><span>'+(p.items?p.items.length:p.pick)+' de 5 ml</span><span><s>'+money(p.o5)+'</s><b>'+money(p.p5)+'</b></span></button>';
+      if(p.p10) opts+='<button type="button" class="opt" data-s="10" aria-pressed="false"><span>'+p.items.length+' de 10 ml</span><span><s>'+money(p.o10)+'</s><b>'+money(p.p10)+'</b></span></button>';
       var picks=p.pick?'<div class="picks" role="group" aria-label="Elegí '+p.pick+'">'+p.from.map(function(i){return '<button type="button" class="pick" data-id="'+i+'" aria-pressed="false">'+esc(byId(i).name.replace("Odyssey ","").replace("Hawas For Him Ice","Hawas Ice").replace("Club de Nuit ",""))+'</button>'}).join("")+'</div>':'';
       el.innerHTML='<div class="stack">'+imgs+'</div><h3>'+esc(p.name)+'</h3><p class="inc">'+esc(p.inc)+'</p>'+picks+'<div class="opts">'+opts+'</div><button class="add">'+(p.pick?"Elegí 3 perfumes":"Agregar promo")+'</button>';
       var size="5", chosen=[], ab=$(".add",el);
